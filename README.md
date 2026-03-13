@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # cduBot_dashboard
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -57,3 +58,7 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```sh
 npm run lint
 ```
+=======
+# LBOT
+agent
+>>>>>>> 8158a838c169bef085dbc9c7fb762f5f159f6256

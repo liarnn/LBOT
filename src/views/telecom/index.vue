@@ -66,7 +66,9 @@
 <script setup lang="ts">
   import { ref, watch, nextTick } from "vue";
   import { ElMessage } from "element-plus";
-
+  import axios from "axios";
+  import { getChatURL } from "@/api/telecom";
+  import service from "@/api/request";
   // 定义消息类型
   interface ChatMessage {
     role: "user" | "robot"; // 角色：用户/机器人
@@ -101,14 +103,41 @@
     inputContent.value = "";
 
     // 3. 模拟机器人回复（实际项目中替换为接口请求）
+    const jsonMsg: any = {
+          content: userMsg.content,
+        }
     setTimeout(() => {
-      const robotMsg: ChatMessage = {
-        role: "robot",
-        content: `你发送的是：${userMsg.content}，我是机器人回复~`,
-
-        time: new Date(),
-      };
-      messages.value.push(robotMsg);
+    const  res = service.post(getChatURL(),jsonMsg)
+      res.then((res) => { 
+        const robotMsg: ChatMessage = {
+          role: "robot",
+          content: res.data,
+          time: new Date(),
+        };
+        messages.value.push(robotMsg);
+      });
+      // axios
+      //   .post("http://127.0.0.1:80/api/chat", {
+      //     content: `${userMsg.content}`,
+      //   })
+      //   .then((res) => {
+      //     const robotMsg: ChatMessage = {
+      //       role: "robot",
+      //       content: res.data.data,
+      //       time: new Date(),
+      //     };
+      //     messages.value.push(robotMsg);
+      //   })
+      //   .catch((e) => {
+      //     console.log("请求大模型失败：" + e);
+      //     if (e.response) {
+      //       alert("接口错误：" + e.response.data.detail);
+      //     } else if (e.request) {
+      //       alert("连接失败：请检查后端服务是否运行在 127.0.0.1:80");
+      //     } else {
+      //       alert("请求配置错误：" + e.message);
+      //     }
+      //   });
     }, 800);
   };
 
