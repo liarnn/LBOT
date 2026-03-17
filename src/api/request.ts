@@ -4,7 +4,7 @@ import axios from "axios";
 const service = axios.create({
   // 从环境变量获取基础URL（推荐：不同环境用不同.env文件）
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:80",
-  timeout: 10000, // 请求超时时间 10s
+  timeout: 30000, // 请求超时时间 30s
   headers: {
     "Content-Type": "application/json;charset=utf-8", // 统一设置默认请求头
   },

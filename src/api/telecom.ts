@@ -1,3 +1,3 @@
-export function getChatURL(){
-  return "/api/chat"
+export function getChatURL() {
+  return "/api/ragchat";
 }

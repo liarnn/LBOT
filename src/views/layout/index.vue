@@ -1,61 +1,92 @@
 <template>
-  <div class="common-layout">
-    <el-container class="layout-container-demo" style="height: calc(100vh - 32px)">
-      <el-aside width="200px">
+  <div class="app-wrapper">
+    <el-container class="layout-container" style="height: 100vh">
+      <el-aside width="200px" class="sidebar">
         <el-scrollbar>
           <el-menu router :default-active="route.path" :default-openeds="['/config']">
-          <el-menu-item index="/welcome"><img class="layoutic" src="src\assets\icon\icon_欢迎模式.png">欢迎</el-menu-item>
-          <el-menu-item index="/robot"><img class="layoutic" src="src\assets\icon\机器人.png">机器人</el-menu-item>
-          <el-menu-item index="/provider"><img class="layoutic" src="src\assets\icon\搜索商家.png">模型提供商</el-menu-item>
-          <el-menu-item index="/telecom"><img class="layoutic" src="src\assets\icon\电话.png">测试联通</el-menu-item>
+            <el-menu-item index="/welcome">
+              <img class="layoutic" src="src\assets\icon\icon_欢迎模式.png" alt="">
+              欢迎
+            </el-menu-item>
+            <el-menu-item index="/robot">
+              <img class="layoutic" src="src\assets\icon\机器人.png" alt="">
+              机器人
+            </el-menu-item>
+            <el-menu-item index="/provider">
+              <img class="layoutic" src="src\assets\icon\搜索商家.png" alt="">
+              模型提供商
+            </el-menu-item>
+            <el-menu-item index="/telecom">
+              <img class="layoutic" src="src\assets\icon\电话.png" alt="">
+              测试联通
+            </el-menu-item>
 
-          <el-sub-menu index="/config">
-            <template #title>
-              <img class="layoutic" src="src\assets\icon\配置文件.png">配置文件
-            </template>
+            <el-sub-menu index="/config">
+              <template #title>
+                <img class="layoutic" src="src\assets\icon\配置文件.png" alt="">
+                配置文件
+              </template>
 
-            <el-menu-item index="/config/basic"><img class="layoutic" src="src\assets\icon\普通配置.png" alt="">普通配置</el-menu-item>
-            <el-menu-item index="/config/advanced"><img class="layoutic" src="src\assets\icon\高级配置.png">高级配置</el-menu-item>
-            <el-menu-item index="/config/reserved"><img class="layoutic" src=""></img>预留</el-menu-item>
-          </el-sub-menu>
-          <el-sub-menu index="/plugin">
-              <template #title><img class="layoutic" src="src\assets\icon\插件.png">插件</template>
-              <el-menu-item index="/plugin/skills"><img class="layoutic" src="src\assets\icon\职业技能鉴定.png">skills</el-menu-item>
+              <el-menu-item index="/config/basic">
+                <img class="layoutic" src="src\assets\icon\普通配置.png" alt="">
+                普通配置
+              </el-menu-item>
+              <el-menu-item index="/config/advanced">
+                <img class="layoutic" src="src\assets\icon\高级配置.png" alt="">
+                高级配置
+              </el-menu-item>
+              <el-menu-item index="/config/reserved">
+                <img class="layoutic" src="" alt=""></img>
+                预留
+              </el-menu-item>
+            </el-sub-menu>
+            <el-sub-menu index="/plugin">
+              <template #title>
+                <img class="layoutic" src="src\assets\icon\插件.png" alt="">
+                插件
+              </template>
+              <el-menu-item index="/plugin/skills">
+                <img class="layoutic" src="src\assets\icon\职业技能鉴定.png" alt="">
+                skills
+              </el-menu-item>
             </el-sub-menu>
 
-          <el-menu-item index="/reserved"><img class="layoutic" src="src\assets\icon\文档.png">预留</el-menu-item>
-          <el-menu-item index="/settings"><el-icon><Setting /></el-icon>设置</el-menu-item>
-          <el-menu-item index="/docs"><img class="layoutic" src="src\assets\icon\文档.png">文档</el-menu-item>
-        </el-menu>
+            <el-menu-item index="/reserved">
+              <img class="layoutic" src="src\assets\icon\文档.png" alt="">
+              预留
+            </el-menu-item>
+            <el-menu-item index="/settings">
+              <el-icon><Setting /></el-icon>
+              设置
+            </el-menu-item>
+            <el-menu-item index="/docs">
+              <img class="layoutic" src="src\assets\icon\文档.png" alt="">
+              文档
+            </el-menu-item>
+          </el-menu>
         </el-scrollbar>
       </el-aside>
 
-      <el-container>
-        
-        <el-header style="text-align: right; font-size: 12px" >
+      <el-container class="main-container">
+        <el-header class="header" style="text-align: right; font-size: 12px">
           <div class="header-content">
             <div class="header-left">
               <img class="header-logo" src="src\assets\AI 机器人.png" alt="logo">
             </div>
             <div class="header-right">
               <el-button class="user-btn" type="info" plain @click="handleUserProfile">
-                <img class="layoutic" src="src\assets\icon\个人.png" alt="用户">
+                <img class="layoutic" src="src\assets\icon\个人.png" alt="">
                 个人中心
               </el-button>
             </div>
           </div>
-          
         </el-header>
-        <el-main style="background-image: url('src/assets/icon/机器人聊天.png');
-    background-repeat: no-repeat;
-    background-size: auto 90%;
-    background-position: center;">
-           <RouterView />
+
+        <el-main class="app-main">
+          <RouterView />
         </el-main>
 
-        <el-footer
-          style="text-align: center; font-size: 14px; padding-top: 10px"
-        >
+        <el-footer class="footer" style="text-align: center; font-size: 14px; padding-top: 10px">
           made in cduL.
         </el-footer>
       </el-container>
@@ -165,20 +196,25 @@
     color: rgba(0, 0, 0, 0.65);
   }
 
-  .layout-container-demo .el-main {
-    padding: 24px;
+  .app-main {
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
     background: linear-gradient(135deg, #fefefe, #fff5f7);
   }
 
-  .layout-container-demo .el-footer {
+  .footer {
     background: transparent;
     padding: 16px 20px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     text-align: center;
     color: rgba(0, 0, 0, 0.65);
+    flex-shrink: 0;
   }
 
-  .layout-container-demo .el-footer span {
-    font-weight: 600;
+  .layoutic {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
   }
 </style>
